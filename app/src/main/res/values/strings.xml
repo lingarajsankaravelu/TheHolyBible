@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">The Holy Bible</string>
+<string name="open_drawable">open drawer</string>
+    <string name="close_drawable">close drawer</string>
+    <string-array name="bible_List">
+        Genesis
+        Exodus
+        Leviticus
+        Numbers
+        Deuteronomy
+        Joshua
+        Judges
+        Ruth
+        1st Samuel
+        2nd Samuel
+        1st Kings
+        2nd Kings
+        1st Chronicles
+        2nd Chronicles
+        Ezra
+        Nehemiah
+        Esther
+        Job
+        Psalms
+        Proverbs
+        Ecclesiastes
+        Song of Solomon
+        Isaiah
+        Jeremiah
+        Lamentations
+        Ezekiel
+        Daniel
+        Hosea
+        Joel
+        Amos
+        Obadiah
+        Jonah
+        Micah
+        Nahum
+        Habakkuk
+        Zephaniah
+        Haggai
+        Zechariah
+        Malachi
+
+    </string-array>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+</resources>
