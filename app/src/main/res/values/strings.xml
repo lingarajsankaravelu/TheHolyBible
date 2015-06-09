@@ -1,47 +1,48 @@
 <resources>
     <string name="app_name">The Holy Bible</string>
-<string name="open_drawable">open drawer</string>
-    <string name="close_drawable">close drawer</string>
+<string name="drawer_opened">open drawer</string>
+    <string name="drawaer_closed">close drawer</string>
     <string-array name="bible_List">
-        Genesis
-        Exodus
-        Leviticus
-        Numbers
-        Deuteronomy
-        Joshua
-        Judges
-        Ruth
-        1st Samuel
-        2nd Samuel
-        1st Kings
-        2nd Kings
-        1st Chronicles
-        2nd Chronicles
-        Ezra
-        Nehemiah
-        Esther
-        Job
-        Psalms
-        Proverbs
-        Ecclesiastes
-        Song of Solomon
-        Isaiah
-        Jeremiah
-        Lamentations
-        Ezekiel
-        Daniel
-        Hosea
-        Joel
-        Amos
-        Obadiah
-        Jonah
-        Micah
-        Nahum
-        Habakkuk
-        Zephaniah
-        Haggai
-        Zechariah
-        Malachi
+       <item> Genesis</item>
+        <item>Exodus</item>
+       <item >Leviticus</item>
+       <item> Numbers</item>
+        <item>Deuteronomy</item>
+        <item>Joshua</item>
+        <item>Judges</item>
+        <item>Ruth</item>
+        <item>1st Samuel</item>
+        <item>2nd Samuel</item>
+        <item>1st Kings</item>
+        <item>2nd Kings</item>
+        <item>1st Chronicles</item>
+        <item>2nd Chronicles</item>
+        <item>Ezra</item>
+        <item>Nehemiah</item>
+        <item>Esther</item>
+        <item>Job</item>
+        <item>Psalms</item>
+        <item>Proverbs</item>
+        <item>Ecclesiastes</item>
+        <item>Song of Solomon</item>
+        <item>Isaiah</item>
+        <item>Jeremiah</item>
+        <item>Lamentations</item>
+        <item>Ezekiel</item>
+        <item>Daniel</item>
+       <item>>Hosea</item>
+        <item>Joel</item>
+        <item>Amos</item>
+        <item>Obadiah</item>
+        <item>Jonah</item>
+        <item>Micah</item>
+        <item>Nahum</item>
+        <item>Habakkuk</item>
+        <item>Zephaniah</item>
+        <item>Haggai</item>
+        <item>Zechariah</item>
+        <item>Malachi</item>
+
 
     </string-array>
     <string name="hello_world">Hello world!</string>

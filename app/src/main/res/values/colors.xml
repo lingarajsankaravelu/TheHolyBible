@@ -3,6 +3,6 @@
     <color name="colorprimary">#4049CE</color>
     <color name="colorprimaydark">#323AAC</color>
     <color name="coloraccent">#4049CE</color>
-    
+    <color name="whitebackgroud">#FFFFFF</color>
     
 </resources>
