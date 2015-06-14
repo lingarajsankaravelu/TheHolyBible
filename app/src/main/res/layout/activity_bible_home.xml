@@ -7,11 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mydrawerlayout"
-    android:layout_below="?actionBarTheme"
+
+
+
 
 
 
     >
+
 
     <!-- content to be displayed inside Activity !-->
 
@@ -24,7 +27,6 @@
         <include layout="@layout/my_toolbar"
             android:id="@+id/my_toolbar"
             />
-
 
     <FrameLayout
         android:id="@+id/myframe"
@@ -40,18 +42,19 @@
 
 
         <ListView
-           android:layout_gravity="left"
-            android:background="@color/whitebackgroud"
+           android:layout_gravity="left|start"
+            android:background="?android:windowBackground"
+            android:textAlignment="textStart"
 
 
-           android:divider="@color/colorprimary"
+
+           android:divider="@color/grey"
             android:id="@+id/listview_drawer"
             android:layout_width="350dp"
             android:choiceMode="singleChoice"
             android:layout_height="match_parent"
-            android:dividerHeight="1dp"
+            android:dividerHeight="1dip"
 
-           android:layout_marginTop="?actionBarSize"
     >
 
 

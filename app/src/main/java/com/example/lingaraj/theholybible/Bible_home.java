@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,17 +15,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.support.v4.*;
 import android.widget.Switch;
 import android.widget.Toast;
 
 
-public class Bible_home extends ActionBarActivity  {
+public class Bible_home extends ActionBarActivity {
     public ListView listView_drawer;
     public DrawerLayout mydrawer;
     public Toolbar mytoolToolbar;
     public String [] mylist;
+    Fragment myfrag;
+    FragmentManager mymanager;
+
+
 
 
     public android.support.v7.app.ActionBarDrawerToggle myActionBarDrawerToggle;
@@ -34,6 +42,8 @@ public class Bible_home extends ActionBarActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_home);
+
+
         listView_drawer=(ListView) findViewById(R.id.listview_drawer);
         try {
 
@@ -55,14 +65,18 @@ public class Bible_home extends ActionBarActivity  {
         setSupportActionBar(mytoolToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        mytoolToolbar.setTitleTextColor(getResources().getColor(R.color.whitebackgroud));
       // navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
         navigationdrawerAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mylist);
         listView_drawer.setAdapter(navigationdrawerAdapter);
 
 
+
         initdrawer();
 
-
+        myfrag= new genesismain();
+        mymanager=getSupportFragmentManager();
+        mymanager.beginTransaction().replace(R.id.myframe,myfrag).show(myfrag).commit();
 
 
     }
@@ -79,6 +93,7 @@ public class Bible_home extends ActionBarActivity  {
              public void onDrawerClosed(View drawerview) {
                  super.onDrawerClosed(drawerview);
                  getSupportActionBar().setTitle(getTitle());
+                 invalidateOptionsMenu();
              }
 
              public void onDrawerOpen(View drawerview)
@@ -86,6 +101,7 @@ public class Bible_home extends ActionBarActivity  {
              {
                  super.onDrawerOpened(drawerview);
                  getSupportActionBar().setTitle(getTitle());
+                 invalidateOptionsMenu();
              }
          };
         mydrawer.setDrawerListener(myActionBarDrawerToggle);
