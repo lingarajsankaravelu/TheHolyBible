@@ -2,6 +2,8 @@ package com.example.lingaraj.theholybible;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -35,7 +37,10 @@ public class Bible_home extends ActionBarActivity {
 
     public android.support.v7.app.ActionBarDrawerToggle myActionBarDrawerToggle;
     public ArrayAdapter<String> navigationdrawerAdapter;
+   public  Bible_home()
+{
 
+}
 
 
     @Override
@@ -44,44 +49,77 @@ public class Bible_home extends ActionBarActivity {
         setContentView(R.layout.activity_bible_home);
 
 
-        listView_drawer=(ListView) findViewById(R.id.listview_drawer);
+        listView_drawer = (ListView) findViewById(R.id.listview_drawer);
         try {
 
 
             mylist = getResources().getStringArray(R.array.bible_List);
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this, e.toString() ,Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
 
 
-        mydrawer=(DrawerLayout)findViewById(R.id.mydrawerlayout);
+        mydrawer = (DrawerLayout) findViewById(R.id.mydrawerlayout);
 
 
-
-
-        mytoolToolbar=(Toolbar)findViewById(R.id.my_toolbar);
+        mytoolToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mytoolToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mytoolToolbar.setTitleTextColor(getResources().getColor(R.color.whitebackgroud));
-      // navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
-        navigationdrawerAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mylist);
+        // navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
+        navigationdrawerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mylist);
         listView_drawer.setAdapter(navigationdrawerAdapter);
-
 
 
         initdrawer();
 
-        myfrag= new genesismain();
-        mymanager=getSupportFragmentManager();
-        mymanager.beginTransaction().replace(R.id.myframe,myfrag).show(myfrag).commit();
+        myfrag = new genesismain();
+        mymanager = getSupportFragmentManager();
+        mymanager.beginTransaction().replace(R.id.myframe, myfrag).show(myfrag).commit();
+
+        //DataBaseHelper mydbhelper;
+        //mydbhelper = new DataBaseHelper(this);
+
+
+      /*  try
+        {
+            //mydbhelper.createDataBase();
+               mydbhelper.createDatabase();
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show();
+        }
+        try {
+            mydbhelper.openDataBase();
+
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show();
+
+        }
+    mydbhelper.close();
+    }
+*/
+
+        DatabaseAssetHelper mydb=new DatabaseAssetHelper(this);
+        try {
+            SQLiteDatabase sq = mydb.getReadableDatabase();
+            Cursor mycursor = sq.rawQuery("select sayings from genesis where id=1", null);
+            mycursor.moveToFirst();
+            String sayings = mycursor.getString(mycursor.getColumnIndex("sayings"));
+            Toast.makeText(this,sayings,Toast.LENGTH_LONG).show();
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+        }
+
 
 
     }
-
-
     // Intializing the listview to be displayed on the left drawer toggle
     private void initlistview() {
 
