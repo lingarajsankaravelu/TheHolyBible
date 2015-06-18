@@ -12,10 +12,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -24,12 +27,13 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 
-public class Bible_home extends ActionBarActivity {
+public class Bible_home extends ActionBarActivity  {
     public ListView listView_drawer;
     public DrawerLayout mydrawer;
     public Toolbar mytoolToolbar;
     public String [] mylist;
     Fragment myfrag;
+    public DatabaseAssetHelper mydb;
     FragmentManager mymanager;
 
 
@@ -37,10 +41,7 @@ public class Bible_home extends ActionBarActivity {
 
     public android.support.v7.app.ActionBarDrawerToggle myActionBarDrawerToggle;
     public ArrayAdapter<String> navigationdrawerAdapter;
-   public  Bible_home()
-{
 
-}
 
 
     @Override
@@ -50,18 +51,8 @@ public class Bible_home extends ActionBarActivity {
 
 
         listView_drawer = (ListView) findViewById(R.id.listview_drawer);
-        try {
-
-
-            mylist = getResources().getStringArray(R.array.bible_List);
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-        }
-
-
+        mylist = getResources().getStringArray(R.array.bible_List);
         mydrawer = (DrawerLayout) findViewById(R.id.mydrawerlayout);
-
-
         mytoolToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mytoolToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,64 +64,20 @@ public class Bible_home extends ActionBarActivity {
 
 
         initdrawer();
-
-        myfrag = new genesismain();
-        mymanager = getSupportFragmentManager();
-        mymanager.beginTransaction().replace(R.id.myframe, myfrag).show(myfrag).commit();
-
-        //DataBaseHelper mydbhelper;
-        //mydbhelper = new DataBaseHelper(this);
-
-
-      /*  try
-        {
-            //mydbhelper.createDataBase();
-               mydbhelper.createDatabase();
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show();
-        }
-        try {
-            mydbhelper.openDataBase();
-
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show();
-
-        }
-    mydbhelper.close();
-    }
-*/
-
-        DatabaseAssetHelper mydb=new DatabaseAssetHelper(this);
-        try {
-            SQLiteDatabase sq = mydb.getReadableDatabase();
-            Cursor mycursor = sq.rawQuery("select sayings from genesis where id=1", null);
-            mycursor.moveToFirst();
-            String sayings = mycursor.getString(mycursor.getColumnIndex("sayings"));
-            Toast.makeText(this,sayings,Toast.LENGTH_LONG).show();
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
-        }
-
-
+     mydb= new DatabaseAssetHelper(this);
+        mydb.close();
 
     }
     // Intializing the listview to be displayed on the left drawer toggle
-    private void initlistview() {
 
 
-    }
-
+    // Drawer Intialiazitoin and onclick listener
     private void initdrawer() {
          myActionBarDrawerToggle=new android.support.v7.app.ActionBarDrawerToggle(this,mydrawer,mytoolToolbar,R.string.drawer_opened,R.string.drawaer_closed) {
+
              public void onDrawerClosed(View drawerview) {
                  super.onDrawerClosed(drawerview);
-                 getSupportActionBar().setTitle(getTitle());
+
                  invalidateOptionsMenu();
              }
 
@@ -138,13 +85,46 @@ public class Bible_home extends ActionBarActivity {
 
              {
                  super.onDrawerOpened(drawerview);
-                 getSupportActionBar().setTitle(getTitle());
+              //   getSupportActionBar().setTitle(getTitle());
                  invalidateOptionsMenu();
              }
          };
-        mydrawer.setDrawerListener(myActionBarDrawerToggle);
+
+
+
+          mydrawer.setDrawerListener(myActionBarDrawerToggle);
+        listView_drawer.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int posid= position+1;
+
+                switch (posid)
+                {
+                    case 1:
+                        myfrag=new genesismain();
+                        fragmentChange(myfrag);
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+        });
+    }
+
+
+
+
+   // changing Fragment according to listview selection
+    public  void fragmentChange(Fragment newfrag)
+    {
+
+        mymanager = getSupportFragmentManager();
+        mymanager.beginTransaction().replace(R.id.myframe, newfrag).show(newfrag).commit();
+        mydrawer.closeDrawer(Gravity.LEFT);
 
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -178,25 +158,6 @@ public class Bible_home extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
-
-        if(myActionBarDrawerToggle.onOptionsItemSelected(item))
-        {
-            int position=item.getItemId();
-            switch (position)
-            {
-                case 1:
-
-                    Toast.makeText(this, position ,Toast.LENGTH_SHORT).show();
-                    break;
-
-                default:
-                    Toast.makeText(this, "other than first item pressed" ,Toast.LENGTH_SHORT).show();
-                    break;
-
-
-
-            }
         }
 
 
