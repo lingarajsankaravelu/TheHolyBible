@@ -104,9 +104,158 @@ public class Bible_home extends ActionBarActivity  {
                         myfrag=new genesismain();
                         fragmentChange(myfrag);
                         break;
-                    default:
+                    case 2:
+                        myfrag=new exodus_main();
+                        fragmentChange(myfrag);
                         break;
-
+                    case 3:
+                        myfrag=new leviticus_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 4:
+                        myfrag=new numbers_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 5:
+                        myfrag=new deuteronomy_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 6:
+                        myfrag= new joshua_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 7:
+                        myfrag= new judges_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 8:
+                        myfrag= new ruth_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 9:
+                        myfrag= new one_samuel_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 10:
+                        myfrag=new second_samuel_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 11:
+                        myfrag= new one_kings_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 12:
+                        myfrag= new second_kings_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 13:
+                        myfrag=new first_chronicles();
+                        fragmentChange(myfrag);
+                        break;
+                    case 14:
+                        myfrag= new second_chronicles();
+                        fragmentChange(myfrag);
+                        break;
+                    case 15:
+                        myfrag= new ezra_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 16:
+                        myfrag= new nehemiah();
+                        fragmentChange(myfrag);
+                        break;
+                    case 17:
+                        myfrag= new esther_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 18:
+                        myfrag=new job_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 19:
+                        myfrag= new psalms_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 20:
+                        myfrag= new proverbs_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 21:
+                        myfrag= new Eccesiastes_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 22:
+                        myfrag=new songofsolomon();
+                        fragmentChange(myfrag);
+                        break;
+                    case 23:
+                        myfrag= new Isaiah();
+                        fragmentChange(myfrag);
+                        break;
+                    case 24:
+                        myfrag=new Jeremiah();
+                        fragmentChange(myfrag);
+                        break;
+                    case 25:
+                        myfrag=new Lamentation_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 26:
+                        myfrag= new Ezekiel();
+                        fragmentChange(myfrag);
+                        break;
+                    case 27:
+                        myfrag=new Daniel();
+                        fragmentChange(myfrag);
+                        break;
+                    case 28:
+                        myfrag= new Hosea_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 29:
+                        myfrag= new Joel();
+                        fragmentChange(myfrag);
+                        break;
+                    case 30:
+                        myfrag=new Amos_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 31:
+                        myfrag=new obadiah_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 32:
+                        myfrag= new Jonah_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 33:
+                        myfrag=new Micah_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 34:
+                        myfrag= new Nahum_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 35:
+                        myfrag=new Habakkuk_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 36:
+                        myfrag= new Zephaniah_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 37:
+                        myfrag=new Haggai_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 38:
+                        myfrag=new Zechariah_main();
+                        fragmentChange(myfrag);
+                        break;
+                    case 39:
+                        myfrag= new Malachi_main();
+                        fragmentChange(myfrag);
+                        break;
                 }
             }
         });
