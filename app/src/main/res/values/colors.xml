@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorprimary">#4049CE</color>
+    <color name="previouscolorprimary">#4049CE</color>
+    <color name="colorprimary">#3F51B5</color>
     <color name="colorprimaydark">#323AAC</color>
     <color name="coloraccent">#4049CE</color>
     <color name="whitebackgroud">#FFFFFF</color>

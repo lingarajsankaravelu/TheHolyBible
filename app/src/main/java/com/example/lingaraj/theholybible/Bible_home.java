@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.support.v4.*;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -57,11 +59,13 @@ public class Bible_home extends ActionBarActivity  {
         setSupportActionBar(mytoolToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
         mytoolToolbar.setTitleTextColor(getResources().getColor(R.color.whitebackgroud));
         // navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
         navigationdrawerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mylist);
         listView_drawer.setAdapter(navigationdrawerAdapter);
-
 
         initdrawer();
      mydb= new DatabaseAssetHelper(this);
@@ -274,6 +278,10 @@ public class Bible_home extends ActionBarActivity  {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -287,16 +295,46 @@ public class Bible_home extends ActionBarActivity  {
         myActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(mydrawer.isDrawerOpen(Gravity.LEFT))
+        {
+            mydrawer.closeDrawer(Gravity.LEFT);
+        }
+        else {
+            super.onBackPressed();
+        }
+        }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+      //  Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_bible_home, menu);
-        return true;
+       // MenuInflater menuInflater=getMenuInflater();
+        //menuInflater.inflate(R.menu.menu_bible_home,menu);
+        //MenuItem mitem=menu.findItem(R.id.mymenu);
+        //Spinner spin =(Spinner) mitem.getActionView();
+        //setupSpinner(spin);
+
+        return false;
     }
 
+   /* public void setupSpinner(Spinner spin) {
+       Integer[] textsize={12,14,16,18,20};
+        ArrayAdapter<Integer> adapter;
+        adapter=new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,textsize);
+        spin.setAdapter(adapter);
+
+//assign adapter to the Spinner
+       // spin.setAdapter(adapter);
+
+    }
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -305,10 +343,6 @@ public class Bible_home extends ActionBarActivity  {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
 
 
         return super.onOptionsItemSelected(item);

@@ -1,12 +1,22 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
 
+
+    <include layout="@layout/my_toolbar"
+        android:id="@+id/my_toolbar"
+        />
 
 <android.support.v4.widget.DrawerLayout
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mydrawerlayout"
+
 
 
 
@@ -24,9 +34,7 @@
         android:orientation="vertical"
         android:background="@color/whitebackgroud"
         >
-        <include layout="@layout/my_toolbar"
-            android:id="@+id/my_toolbar"
-            />
+
 
     <FrameLayout
         android:id="@+id/myframe"
@@ -43,14 +51,13 @@
 
         <ListView
            android:layout_gravity="left|start"
-            android:background="?android:windowBackground"
+
             android:textAlignment="textStart"
             android:clickable="true"
 
-
            android:divider="@color/grey"
             android:id="@+id/listview_drawer"
-            android:layout_width="350dp"
+            android:layout_width="wrap_content"
             android:choiceMode="singleChoice"
             android:layout_height="match_parent"
             android:dividerHeight="1dip"
@@ -66,5 +73,5 @@
 
 </android.support.v4.widget.DrawerLayout>
 
-
+</LinearLayout>
 

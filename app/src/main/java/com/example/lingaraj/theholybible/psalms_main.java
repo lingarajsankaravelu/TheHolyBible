@@ -1,16 +1,11 @@
 package com.example.lingaraj.theholybible;
 
-import android.content.Context;
-import android.database.sqlite.*;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +15,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.security.PublicKey;
-
-import static android.content.Context.MODE_PRIVATE;
-import static android.database.sqlite.SQLiteDatabase.openDatabase;
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
 /**
- * Created by lingaraj on 6/12/2015.
+ * Created by lingaraj on 6/19/2015.
  */
-public class genesismain extends Fragment  {
+public class psalms_main extends Fragment {
     public DatabaseAssetHelper mydb;
-
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
-    public String[] mylist = {"GENESIS 1", "GENESIS 2", "GENESIS 3", "GENESIS 4", "GENESIS 5", "GENESIS 6", "GENESIS 7", "GENESIS 8", "GENESIS 9", "GENESIS 10", "GENESIS 11", "GENESIS 12"
-            , "GENESIS 13", "GENESIS 14", "GENESIS 15", "GENESIS 16", "GENESIS 17", "GENESIS 18", "GENESIS 19", "GENESIS 20", "GENESIS 21", "GENESIS 22", "GENESIS 23", "GENESIS 24", "GENESIS 25"
-            , "GENESIS 26", "GENESIS 27", "GENESIS 28", "GENESIS 29", "GENESIS 30","GENESIS 31"," GENESIS 32", "GENESIS 33", "GENESIS 34", "GENESIS 35", "GENESIS 36"," GENESIS 37", "GENESIS 38", "GENESIS 39", "GENESIS 40"," GENESIS 41", "GENESIS 42"," GENESIS 43"," GENESIS 44", "GENESIS 45", "GENESIS 46"," GENESIS 47", "GENESIS 48"," GENESIS 49"," GENESIS 50"
+    public String[] mylist = {"PSALMS 1", "PSALMS 2", "PSALMS 3", "PSALMS 4", "PSALMS 5", "PSALMS 6", "PSALMS 7", "PSALMS 8", "PSALMS 9", "PSALMS 10", "PSALMS 11", "PSALMS 12"
+            , "PSALMS 13", "PSALMS 14", "PSALMS 15", "PSALMS 16", "PSALMS 17", "PSALMS 18", "PSALMS 19", "PSALMS 20", "PSALMS 21", "PSALMS 22", "PSALMS 23", "PSALMS 24", "PSALMS 25"
+            , "PSALMS 26", "PSALMS 27", "PSALMS 28", "PSALMS 29", "PSALMS 30","PSALMS 31"," PSALMS 32", "PSALMS 33", "PSALMS 34", "PSALMS 35", "PSALMS 36"," PSALMS 37", "PSALMS 38", "PSALMS 39", "PSALMS 40"," PSALMS 41", "PSALMS 42"," PSALMS 43"," PSALMS 44", "PSALMS 45", "PSALMS 46"," PSALMS 47", "PSALMS 48"," PSALMS 49"," PSALMS 50",
+            "PSALMS 51", "PSALMS 52", "PSALMS 53", "PSALMS 54", "PSALMS 55", "PSALMS 56", "PSALMS 57", "PSALMS 58", "PSALMS 59", "PSALMS 60", "PSALMS 61", "PSALMS 62"
+            , "PSALMS 63", "PSALMS 64", "PSALMS 65", "PSALMS 66", "PSALMS 67", "PSALMS 68", "PSALMS 69", "PSALMS 70", "PSALMS 71", "PSALMS 72", "PSALMS 73", "PSALMS 74", "PSALMS 75"
+            , "PSALMS 76", "PSALMS 77", "PSALMS 78", "PSALMS 79", "PSALMS 80","PSALMS 81"," PSALMS 82", "PSALMS 83", "PSALMS 84", "PSALMS 85", "PSALMS 86"," PSALMS 87", "PSALMS 88", "PSALMS 89", "PSALMS 90"," PSALMS 91", "PSALMS 92"," PSALMS 93"," PSALMS 94", "PSALMS 95", "PSALMS 96"," PSALMS 97", "PSALMS 98"," PSALMS 99"," PSALMS 100"
+
 
 
 
@@ -56,35 +46,31 @@ public class genesismain extends Fragment  {
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
 
 
-
-           Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
-           mytextview.setTypeface(tf);
-           mytextview.setTextSize(16);
-
-
-
-
-        setHasOptionsMenu(true);
         mySpinner.setAdapter(myadap);
+        setHasOptionsMenu(true);
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
+        mytextview.setTypeface(tf);
+        mytextview.setTextSize(16);
+
 
         myadap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-    mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            int item = position + 1;
-            getData(item);
+                int item=position+1;
+                getData(item);
 
-        }
+            }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            int item = 1;
-            getData(item);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                int item=1;
+                getData(item);
 
-        }
-    });
+            }
+        });
 
 
         return rootview;
@@ -93,46 +79,35 @@ public class genesismain extends Fragment  {
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
     public void getData(int item)
-{
-  int myid=item;
-
-
-
-
-
-     String query="SELECT sayings FROM genesis WHERE id=?";
-    try {
-        SQLiteDatabase sq = mydb.getReadableDatabase();
-
-        Cursor mycursor = sq.rawQuery(query, new String[]{String.valueOf(myid)});
-        mycursor.moveToFirst();
-
-        String sayings = mycursor.getString(mycursor.getColumnIndex("sayings")).toString();
-       //String sayings= mycursor.getString(0).toString();
-        mycursor.close();
-        mytextview.setText(sayings);
-
-       // Toast.makeText(getActivity(),item,Toast.LENGTH_LONG).show();
-
-     mydb.close();
-    }
-   catch(Exception e)
     {
-       Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
-    }
+        int myid=item;
 
-}
+
+
+
+
+        String query="SELECT sayings FROM psalms WHERE id=?";
+        try {
+            SQLiteDatabase sq = mydb.getReadableDatabase();
+
+            Cursor mycursor = sq.rawQuery(query, new String[]{String.valueOf(myid)});
+            mycursor.moveToFirst();
+
+            String sayings = mycursor.getString(mycursor.getColumnIndex("sayings")).toString();
+            //String sayings= mycursor.getString(0).toString();
+            mycursor.close();
+            mytextview.setText(sayings);
+            // Toast.makeText(getActivity(),item,Toast.LENGTH_LONG).show();
+
+            mydb.close();
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+    }
     public void TextSize(int size)
     {
         mytextview.setTextSize(size);
@@ -144,7 +119,7 @@ public class genesismain extends Fragment  {
         {
             TextSize(11);
         }
-       else if(item.getItemId()==R.id.tweleve)
+        else if(item.getItemId()==R.id.tweleve)
         {
             TextSize(12);
         }
@@ -202,5 +177,6 @@ public class genesismain extends Fragment  {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }

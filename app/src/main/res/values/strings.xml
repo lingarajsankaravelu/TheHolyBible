@@ -51,6 +51,17 @@
 
 
     </string-array>
+
+    <integer-array name="textsize">
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+
+
+    </integer-array>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>

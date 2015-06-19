@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/colorprimaydark</item>
         <item name="colorAccent">@color/coloraccent</item>
         <item name="drawerArrowStyle">@style/drawerarrowstyle</item>
-
+        <item name="android:actionOverflowButtonStyle">@style/threedoticon</item>
 
         </style>
     <style name="drawerarrowstyle" parent="Widget.AppCompat.DrawerArrowToggle">
@@ -13,5 +13,8 @@
         <item name="android:color">@color/whitebackgroud</item>
     </style>
 
+<style name="threedoticon" parent="Base.Widget.AppCompat.ActionButton.Overflow">
+<item name="android:src" >@drawable/textsize</item>
 
+</style>
 </resources>
