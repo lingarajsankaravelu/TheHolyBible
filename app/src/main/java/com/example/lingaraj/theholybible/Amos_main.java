@@ -1,9 +1,12 @@
 package com.example.lingaraj.theholybible;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,6 +23,7 @@ import android.widget.Toast;
  */
 public class Amos_main extends Fragment {
     public DatabaseAssetHelper mydb;
+    public static final String preferance_name="Bible_Preference";
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
@@ -40,10 +44,11 @@ public class Amos_main extends Fragment {
        setHasOptionsMenu(true);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
-        mytextview.setTextSize(16);
+
         mySpinner.setAdapter(myadap);
 
         myadap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        get_shared_preferencevalue();
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -51,6 +56,7 @@ public class Amos_main extends Fragment {
 
                 int item=position+1;
                 getData(item);
+                //get_shared_preferencevalue();
 
             }
 
@@ -68,6 +74,32 @@ public class Amos_main extends Fragment {
 
 
     }
+    private void get_shared_preferencevalue() {
+
+        try {
+
+            SharedPreferences sp = this.getActivity().getSharedPreferences(preferance_name, Context.MODE_PRIVATE);
+           // SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+            int value=sp.getInt("my_int_key",18);
+            if(value==0)
+            {
+                mytextview.setTextSize(18);
+
+            }
+            else
+            {
+                mytextview.setTextSize(value);
+            }
+
+
+
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     public void getData(int item)
     {
@@ -88,6 +120,8 @@ public class Amos_main extends Fragment {
             //String sayings= mycursor.getString(0).toString();
             mycursor.close();
             mytextview.setText(sayings);
+            mytextview.setVisibility(View.VISIBLE);
+            //get_shared_preferencevalue();
             // Toast.makeText(getActivity(),item,Toast.LENGTH_LONG).show();
 
             mydb.close();
@@ -98,73 +132,11 @@ public class Amos_main extends Fragment {
         }
 
     }
-    public void TextSize(int size)
-    {
-        mytextview.setTextSize(size);
-    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId()==R.id.eleven)
-        {
-            TextSize(11);
-        }
-        else if(item.getItemId()==R.id.tweleve)
-        {
-            TextSize(12);
-        }
-        else if(item.getItemId()==R.id.thriteen)
-        {
-            TextSize(13);
-        }
-        else if(item.getItemId()==R.id.fourteen)
-        {
-            TextSize(14);
-        }
-        else if(item.getItemId()==R.id.fifteen)
-        {
-            TextSize(15);
-        }
-        else if(item.getItemId()==R.id.sixteen)
-        {
-            TextSize(16);
-        }
-        else if(item.getItemId()==R.id.seventeen)
-        {
-            TextSize(17);
-        }
-        else if(item.getItemId()==R.id.eighteen)
-        {
-            TextSize(18);
-        }
-        else if(item.getItemId()==R.id.nineteen)
-        {
-            TextSize(19);
-        }
-        else if(item.getItemId()==R.id.twenty)
-        {
-            TextSize(20);
-        }
-        else if(item.getItemId()==R.id.twentyone)
-        {
-            TextSize(21);
-        }
-        else if(item.getItemId()==R.id.twentytwo)
-        {
-            TextSize(22);
-        }
-        else if(item.getItemId()==R.id.twentythree)
-        {
-            TextSize(23);
-        }
-        else if(item.getItemId()==R.id.twentyfour)
-        {
-            TextSize(24);
-        }
-        else if(item.getItemId()==R.id.twentyfive)
-        {
-            TextSize(25);
-        }
+
         return super.onOptionsItemSelected(item);
     }
 

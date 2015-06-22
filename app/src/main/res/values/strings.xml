@@ -7,6 +7,12 @@
 
 
     <string name="drawaer_closed">close drawer</string>
+    <string-array name="Text_size_selector">
+        <item>Tsize</item>
+        <item>"1"</item>
+
+
+    </string-array>
 
     <string-array name="bible_List">
        <item> Genesis</item>
@@ -52,7 +58,7 @@
 
     </string-array>
 
-    <integer-array name="textsize">
+    <integer-array name="spinner_items_array">
         <item>12</item>
         <item>14</item>
         <item>16</item>
@@ -64,4 +70,5 @@
     </integer-array>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_customactionbar">customactionbar</string>
 </resources>

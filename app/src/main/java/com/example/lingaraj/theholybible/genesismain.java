@@ -1,10 +1,13 @@
 package com.example.lingaraj.theholybible;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.*;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -33,6 +36,7 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
  */
 public class genesismain extends Fragment  {
     public DatabaseAssetHelper mydb;
+    public static final String preferance_name="Bible_Preference";
 
     public Spinner mySpinner;
     public TextView mytextview;
@@ -43,23 +47,25 @@ public class genesismain extends Fragment  {
 
 
 
-
     };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         View rootview = inflater.inflate(R.layout.genesis_main, container, false);
         mySpinner = (Spinner) rootview.findViewById(R.id.number_spin);
         mytextview=(TextView)rootview.findViewById(R.id.mytextview);
         mydb=new DatabaseAssetHelper(getActivity());
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
 
+        get_shared_preferencevalue();
 
 
            Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
            mytextview.setTypeface(tf);
-           mytextview.setTextSize(16);
+
+
 
 
 
@@ -92,7 +98,52 @@ public class genesismain extends Fragment  {
 
 
     }
+/* Getting shared preference value and setting the same value to our textbox, The textbox size will be set to 18, if the value,
+   returned was null, which happens,when the application was closed and restared again.
+   */
+    private void get_shared_preferencevalue() {
 
+        try {
+
+
+            SharedPreferences sp = this.getActivity().getSharedPreferences(preferance_name,Context.MODE_PRIVATE);
+            //SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+            int value=sp.getInt("my_int_key",18);
+
+            if(value==0)
+            {
+                mytextview.setTextSize(18);
+
+            }
+            else
+            {
+                mytextview.setTextSize(value);
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
+    /* private void checksharedpreference() {
+         int prefer_value=myprefernce.getInt("key_value", Integer.parseInt(null));
+         if(prefer_value==0)
+         {
+
+         }
+         else if(prefer_value>mytextview.getTextSize())
+         {
+
+             mytextview.setTextSize(prefer_value);
+         }
+     }
+ */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -122,6 +173,7 @@ public class genesismain extends Fragment  {
        //String sayings= mycursor.getString(0).toString();
         mycursor.close();
         mytextview.setText(sayings);
+        mytextview.setVisibility(View.VISIBLE);
 
        // Toast.makeText(getActivity(),item,Toast.LENGTH_LONG).show();
 
@@ -133,73 +185,12 @@ public class genesismain extends Fragment  {
     }
 
 }
-    public void TextSize(int size)
-    {
-        mytextview.setTextSize(size);
-    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId()==R.id.eleven)
-        {
-            TextSize(11);
-        }
-       else if(item.getItemId()==R.id.tweleve)
-        {
-            TextSize(12);
-        }
-        else if(item.getItemId()==R.id.thriteen)
-        {
-            TextSize(13);
-        }
-        else if(item.getItemId()==R.id.fourteen)
-        {
-            TextSize(14);
-        }
-        else if(item.getItemId()==R.id.fifteen)
-        {
-            TextSize(15);
-        }
-        else if(item.getItemId()==R.id.sixteen)
-        {
-            TextSize(16);
-        }
-        else if(item.getItemId()==R.id.seventeen)
-        {
-            TextSize(17);
-        }
-        else if(item.getItemId()==R.id.eighteen)
-        {
-            TextSize(18);
-        }
-        else if(item.getItemId()==R.id.nineteen)
-        {
-            TextSize(19);
-        }
-        else if(item.getItemId()==R.id.twenty)
-        {
-            TextSize(20);
-        }
-        else if(item.getItemId()==R.id.twentyone)
-        {
-            TextSize(21);
-        }
-        else if(item.getItemId()==R.id.twentytwo)
-        {
-            TextSize(22);
-        }
-        else if(item.getItemId()==R.id.twentythree)
-        {
-            TextSize(23);
-        }
-        else if(item.getItemId()==R.id.twentyfour)
-        {
-            TextSize(24);
-        }
-        else if(item.getItemId()==R.id.twentyfive)
-        {
-            TextSize(25);
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
