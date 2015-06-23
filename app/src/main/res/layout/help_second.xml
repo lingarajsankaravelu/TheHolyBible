@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:theme="@style/Transparent"
+    android:orientation="horizontal"
+    android:background="@drawable/versus"
+    android:id="@+id/help_second_layout"
+
+    >
+
+    <LinearLayout
+        android:layout_marginLeft="90dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        android:background="@android:color/transparent"
+        >
+        <ImageView
+            android:textDirection="inherit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftsimple"
+
+
+
+            android:background="@android:color/transparent"
+
+            />
+        <TextView
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingRight="30dp"
+            android:textSize="25dp"
+            android:text="Choose Versus here"
+
+            android:background="@color/coloraccent"
+            android:textColor="@color/whitebackgroud"
+
+
+            />
+
+
+
+
+
+    </LinearLayout>
+    </LinearLayout>
