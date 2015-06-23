@@ -21,9 +21,20 @@
 
 
     </style>
+    <style name="myalertdialog" parent="AlertDialog.AppCompat.Light">
+        <item name="android:dropDownSelector">@color/spinnerchooser</item>
+
+    </style>
     <style name="customactionbar" parent="Widget.AppCompat.Spinner.DropDown.ActionBar">
         <item name="android:src">@drawable/textsize</item>
 
 
+    </style>
+    <style name="Transparent" parent="@android:style/Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

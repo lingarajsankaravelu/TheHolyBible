@@ -21,13 +21,16 @@
         android:clickable="true"
 
         android:background="@color/colorprimary"
+         android:theme="@style/myalertdialog"
 
-         android:dropDownSelector="@color/whitebackgroud"
+         android:dropDownSelector="@color/selector"
 
         android:layout_weight="1"
 
         android:padding="10dp"
         android:textDirection="inherit"
+        android:spinnerMode="dialog"
+
 
 
 
@@ -43,6 +46,7 @@
     
 </LinearLayout>
     <ScrollView
+        android:scrollbarFadeDuration="0"
         android:scrollbars="vertical"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
@@ -50,7 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <TextView
-
+        android:lineSpacingExtra="5dp"
+        android:textIsSelectable="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginStart="5dp"

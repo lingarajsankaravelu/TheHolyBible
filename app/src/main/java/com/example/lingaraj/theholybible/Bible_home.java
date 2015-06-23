@@ -2,6 +2,7 @@ package com.example.lingaraj.theholybible;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -75,6 +76,7 @@ public class Bible_home extends ActionBarActivity  {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         SetMyCustomTheme();
+        set_home_page();
 
 
 
@@ -95,6 +97,15 @@ public class Bible_home extends ActionBarActivity  {
         initdrawer();
      mydb= new DatabaseAssetHelper(this);
         mydb.close();
+
+    }
+
+    public void set_home_page() {
+        myfrag= new bible_cover();
+        mymanager = getSupportFragmentManager();
+
+        mymanager.beginTransaction().replace(R.id.myframe,myfrag).show(myfrag).commit();
+
 
     }
 
@@ -465,7 +476,13 @@ public class Bible_home extends ActionBarActivity  {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if(id==R.id.help)
+        {
+            Intent myintent= new Intent(this,help_main.class);
+            startActivity(myintent);
+            finish();
 
+        }
 
         //noinspection SimplifiableIfStatement
 

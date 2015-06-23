@@ -8,4 +8,8 @@
     <color name="grey">#7F7F7F</color>
     <color name="black">#000000</color>
     <color name="yellow">#594A18</color>
+    <color name="selector">#8BC34A</color>
+    <color name="choosertext">#009688</color>
+    <color name="spinnerchooser">#CDDC39</color>
+    <color name="lime">#CDDC39</color>
 </resources>

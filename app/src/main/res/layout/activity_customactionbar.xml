@@ -26,6 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:spinnerMode="dropdown"
+        android:paddingRight="3dp"
+        android:theme="@style/AlertDialog.AppCompat.Light"
+        android:dropDownSelector="@color/selector"
+
+
+
+
 
         android:prompt="@string/choose"
         />
