@@ -10,32 +10,25 @@
     </uses-sdk>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-         />
+
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Holy Bible"
         android:theme="@style/AppTheme" >
-        <activity
+        <activity android:name=".Bible_home"
 
-            android:name=".Bible_home"
-            android:label="@string/app_name" >
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <activity android:name=".help_main"
-           android:label="help"
-           >
-
-       </activity>
-        <activity android:name=".help_second"
-            ></activity>
+        <activity android:name=".share_main"/>
+       <activity android:name=".help_main" />
+        <activity android:name=".help_second" />
         <meta-data
             android:name="DATABASE"
             android:value="thebible.db" />

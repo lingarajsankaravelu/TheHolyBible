@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.*;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -52,14 +53,12 @@ public class genesismain extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
         View rootview = inflater.inflate(R.layout.genesis_main, container, false);
         mySpinner = (Spinner) rootview.findViewById(R.id.number_spin);
         mytextview=(TextView)rootview.findViewById(R.id.mytextview);
         mydb=new DatabaseAssetHelper(getActivity());
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
-
-        get_shared_preferencevalue();
+               get_shared_preferencevalue();
 
 
            Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
@@ -98,9 +97,12 @@ public class genesismain extends Fragment  {
 
 
     }
-/* Getting shared preference value and setting the same value to our textbox, The textbox size will be set to 18, if the value,
-   returned was null, which happens,when the application was closed and restared again.
-   */
+
+
+
+    /* Getting shared preference value and setting the same value to our textbox, The textbox size will be set to 18, if the value,
+                   returned was null, which happens,when the application was closed and restared again.
+                   */
     private void get_shared_preferencevalue() {
 
         try {
@@ -113,6 +115,7 @@ public class genesismain extends Fragment  {
             if(value==0)
             {
                 mytextview.setTextSize(18);
+                Toast.makeText(getActivity(),"Current Textsize: 18",Toast.LENGTH_LONG).show();
 
             }
             else
@@ -131,19 +134,17 @@ public class genesismain extends Fragment  {
 
 
 
-    /* private void checksharedpreference() {
-         int prefer_value=myprefernce.getInt("key_value", Integer.parseInt(null));
-         if(prefer_value==0)
-         {
 
-         }
-         else if(prefer_value>mytextview.getTextSize())
-         {
 
-             mytextview.setTextSize(prefer_value);
-         }
-     }
- */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+
+
+
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

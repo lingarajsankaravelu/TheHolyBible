@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.lingaraj.theholybible.customactionbar">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/share"
+        android:title="Share"
+
+        >
+    </item>
+    <item android:id="@+id/help"
+        android:title="Help"
+        ></item>
 </menu>

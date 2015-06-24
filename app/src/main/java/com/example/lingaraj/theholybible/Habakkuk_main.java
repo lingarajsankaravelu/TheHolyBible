@@ -115,6 +115,7 @@ public class Habakkuk_main extends Fragment {
             if(value==0)
             {
                 mytextview.setTextSize(18);
+                Toast.makeText(getActivity(),"Current Textsize: 18",Toast.LENGTH_LONG).show();
 
             }
             else

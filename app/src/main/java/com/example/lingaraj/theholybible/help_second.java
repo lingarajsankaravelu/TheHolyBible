@@ -19,7 +19,7 @@ public class help_second extends ActionBarActivity {
         mylinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(getApplicationContext(), Bible_home.class);
+                Intent myintent = new Intent(getApplicationContext(), share_main.class);
                 startActivity(myintent);
                 finish();
 

@@ -1,6 +1,8 @@
 package com.example.lingaraj.theholybible;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,11 +44,9 @@ import android.widget.Toast;
 
 public class Bible_home extends ActionBarActivity  {
     public ListView listView_drawer;
+    public ClipboardManager cm;
     public  Spinner overflowbutton;
     public static final String preferance_name="Bible_Preference";
-
-    public Bundle mybundle;
-    public int transfer;
     public DrawerLayout mydrawer;
     public Toolbar mytoolToolbar;
     public String [] mylist;
@@ -65,30 +65,18 @@ public class Bible_home extends ActionBarActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_home);
-
-
-
         listView_drawer = (ListView) findViewById(R.id.listview_drawer);
         mylist = getResources().getStringArray(R.array.bible_List);
         mydrawer = (DrawerLayout) findViewById(R.id.mydrawerlayout);
         mytoolToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mytoolToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);
         SetMyCustomTheme();
         set_home_page();
-
-
-
-
-
-
-
-
-
-
         mytoolToolbar.setTitleTextColor(getResources().getColor(R.color.whitebackgroud));
-        // navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
+        navigationdrawerAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bible_List));
         set_listview_header();
         navigationdrawerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mylist);
         listView_drawer.setAdapter(navigationdrawerAdapter);
@@ -124,14 +112,14 @@ public class Bible_home extends ActionBarActivity  {
 
 
     private void SetMyCustomTheme() {
-        Integer [] mysize={1,2,3,4,5,6,7,8,9,10};
-        String [] mysize1={"Tsize","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",
-        "18","19","20","21","22","23","24","25"};
+
+        String [] mysize1={"size","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",
+        "18","19","20","21","22","23","24","25","26","27","28","29","30"};
 
         LayoutInflater mInflater = (LayoutInflater) getSupportActionBar().getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         // setting up custom view
         View mCustomView = mInflater.inflate(R.layout.activity_customactionbar, null);
-        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+       //TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         //change it back to final Spinner
          overflowbutton=(Spinner) mCustomView.findViewById(R.id.imageButton);
         ArrayAdapter<String> actionbar_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,mysize1);
@@ -170,6 +158,7 @@ public class Bible_home extends ActionBarActivity  {
           myeditor.putInt("my_int_key",size);
 
           myeditor.commit();
+
       }
       catch (Exception e)
       {
@@ -186,6 +175,7 @@ public class Bible_home extends ActionBarActivity  {
         }
         else
         {
+
             try {
 
               TextView changetextsize=(TextView) myfrag.getActivity().findViewById(R.id.mytextview);
@@ -456,25 +446,15 @@ public class Bible_home extends ActionBarActivity  {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-      //  Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_bible_home, menu);
-        //MenuInflater menuInflater=getMenuInflater();
 
-       //MenuItem mitem=menu.findItem(R.id.myoverflow);
-        //Spinner spin =(Spinner) mitem.getActionView();
-       // ListView over_list=(ListView) mitem.getActionView();
-
-        //setupoverflowlist(spin);
-
+        getMenuInflater().inflate(R.menu.menu_customactionbar, menu);
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         if(id==R.id.help)
         {
@@ -483,10 +463,42 @@ public class Bible_home extends ActionBarActivity  {
             finish();
 
         }
+        else  if(id==R.id.share)
+        {
+            ShareIntent();
+        }
 
-        //noinspection SimplifiableIfStatement
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ShareIntent() {
+            cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+             String text;//=  cm.getPrimaryClip().getItemAt(0).toString();
+        if(cm.hasPrimaryClip())
+        {
+            ClipData.Item item=cm.getPrimaryClip().getItemAt(0);
+            text=item.getText().toString();
+            Intent sharingIntent= new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+            startActivity(Intent.createChooser(sharingIntent,"Share Via"));
+
+        }
+        else
+        {
+            Toast.makeText(this,"Copy something to share",Toast.LENGTH_LONG).show();
+
+
+
+
+        }
+
+
+
+
+
+
     }
 }

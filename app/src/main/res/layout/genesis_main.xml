@@ -16,17 +16,12 @@
 
 
     <Spinner
-        android:layout_gravity="start"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:textAlignment="center"
         android:clickable="true"
-
         android:background="@color/colorprimary"
-         android:theme="@style/myalertdialog"
-
-         android:dropDownSelector="@color/selector"
-
-        android:layout_weight="1"
-
+        android:dropDownSelector="@color/selector"
         android:padding="10dp"
         android:textDirection="inherit"
         android:spinnerMode="dialog"

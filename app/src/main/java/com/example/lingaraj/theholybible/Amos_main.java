@@ -36,6 +36,7 @@ public class Amos_main extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         View rootview = inflater.inflate(R.layout.genesis_main, container, false);
         mySpinner = (Spinner) rootview.findViewById(R.id.number_spin);
         mytextview=(TextView)rootview.findViewById(R.id.mytextview);
@@ -84,6 +85,7 @@ public class Amos_main extends Fragment {
             if(value==0)
             {
                 mytextview.setTextSize(18);
+                Toast.makeText(getActivity(),"Current Textsize: 18",Toast.LENGTH_LONG).show();
 
             }
             else

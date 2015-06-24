@@ -1,19 +1,8 @@
 <resources>
-    <string name="app_name">The Holy Bible</string>
+    <string name="app_name">Holy Bible</string>
     <string name="choose">Choose</string>
-
-
-<string name="drawer_opened">open drawer</string>
-
-
+    <string name="drawer_opened">open drawer</string>
     <string name="drawaer_closed">close drawer</string>
-    <string-array name="Text_size_selector">
-        <item>Tsize</item>
-        <item>"1"</item>
-
-
-    </string-array>
-
     <string-array name="bible_List">
        <item> Genesis</item>
         <item>Exodus</item>
@@ -54,20 +43,7 @@
         <item>Haggai</item>
         <item>Zechariah</item>
         <item>Malachi</item>
-
-
     </string-array>
-
-    <integer-array name="spinner_items_array">
-        <item>12</item>
-        <item>14</item>
-        <item>16</item>
-        <item>18</item>
-        <item>20</item>
-        <item>22</item>
-
-
-    </integer-array>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_customactionbar">customactionbar</string>
