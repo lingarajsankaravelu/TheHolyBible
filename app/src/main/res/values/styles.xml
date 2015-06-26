@@ -15,19 +15,8 @@
         <item name="android:color">@color/whitebackgroud</item>
     </style>
 
-    <style name="threedoticon" parent="Base.Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:src" >@drawable/textsize</item>
-
-
-
-    </style>
     <style name="myalertdialog" parent="AlertDialog.AppCompat.Light">
         <item name="android:dropDownSelector">@color/spinnerchooser</item>
-
-    </style>
-    <style name="customactionbar" parent="Widget.AppCompat.Spinner.DropDown.ActionBar">
-        <item name="android:src">@drawable/textsize</item>
-
 
     </style>
     <style name="Transparent" parent="@android:style/Theme.NoTitleBar">

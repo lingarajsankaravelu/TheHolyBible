@@ -4,7 +4,7 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
     defaultConfig {
-        applicationId "com.example.lingaraj.theholybible"
+        applicationId "com.myfirst.lingaraj.theholybible"
         minSdkVersion 11
         targetSdkVersion 22
         versionCode 1
@@ -12,7 +12,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -29,4 +29,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    compile 'com.google.android.gms:play-services-ads:7.5.0'
+
 }
