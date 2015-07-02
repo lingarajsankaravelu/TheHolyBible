@@ -59,23 +59,21 @@
 
 
 
-        <ListView
-           android:layout_gravity="left|start"
 
-            android:textAlignment="textStart"
-            android:clickable="true"
+    <ExpandableListView
+        android:layout_gravity="left|start"
+        android:id="@+id/theexpandables"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:childDivider="@color/grey"
+        android:dividerHeight="2dip"
+        android:divider="@color/grey"
+        android:listSelector="@color/selector"
+        android:background="@android:drawable/screen_background_dark_transparent"
+        android:scrollbars="vertical">
 
-           android:divider="@color/grey"
-            android:id="@+id/listview_drawer"
-            android:layout_width="match_parent"
-            android:choiceMode="singleChoice"
-            android:layout_height="match_parent"
-            android:dividerHeight="1dip"
-            android:listSelector="@color/selector"
-
-
-    >
-        </ListView>
+        </ExpandableListView>
 
 
 

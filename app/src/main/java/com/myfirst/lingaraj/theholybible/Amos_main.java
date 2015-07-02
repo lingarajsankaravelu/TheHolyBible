@@ -26,13 +26,12 @@ import android.widget.Toast;
  */
 public class Amos_main extends Fragment implements View.OnTouchListener {
     final static float STEP = 200;
-
     float mRatio = 1.0f;
     int mBaseDist;
     float mBaseRatio;
     float fontsize = 13;
     public ScrollView myscrollview;
-
+    public Bible_shared_preference ob;
 
     public DatabaseAssetHelper mydb;
     public static final String preferance_name="Bible_Preference";
@@ -51,9 +50,11 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
         View rootview = inflater.inflate(R.layout.genesis_main, container, false);
         mySpinner = (Spinner) rootview.findViewById(R.id.number_spin);
         mySpinner.requestDisallowInterceptTouchEvent(true);
+        ob= new Bible_shared_preference(getActivity());
         mytextview=(TextView)rootview.findViewById(R.id.mytextview);
         myscrollview=(ScrollView) rootview.findViewById(R.id.scrollView_genesis);
         mydb=new DatabaseAssetHelper(getActivity());
+
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
        setHasOptionsMenu(true);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
@@ -95,29 +96,7 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
 
     private void get_shared_preferencevalue() {
 
-        try {
-
-            SharedPreferences sp = this.getActivity().getSharedPreferences(preferance_name, Context.MODE_PRIVATE);
-           // SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-            int value=sp.getInt("my_int_key",18);
-            if(value==0)
-            {
-                mytextview.setTextSize(18);
-                Toast.makeText(getActivity(),"Current Textsize: 18",Toast.LENGTH_LONG).show();
-
-            }
-            else
-            {
-                mytextview.setTextSize(value);
-            }
-
-
-
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_SHORT).show();
-        }
+     mytextview.setTextSize(ob.getData());
     }
 
 
@@ -180,35 +159,20 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
                 mBaseDist = getDistance(event);
                 mBaseRatio = mRatio;
                 myscrollview.requestDisallowInterceptTouchEvent(true);
-
-
-
-
             }
-
-
             else {
                 float delta = (getDistance(event) - mBaseDist) / STEP;
                 float multi = (float) Math.pow(2, delta);
                 mRatio = Math.min(1024.0f, Math.max(0.1f, mBaseRatio * multi));
                 mytextview.setTextSize(mRatio + 13);
-
-
-
-
             }
 
+
         }
-
-
-
+        ob.SetData(mytextview.getTextSize());
         return true;
-
-
-
-
-
     }
+
 
 
 }

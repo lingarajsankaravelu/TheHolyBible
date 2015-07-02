@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +22,14 @@ import android.widget.Toast;
 /**
  * Created by lingaraj on 6/18/2015.
  */
-public class numbers_main extends Fragment {
-    public static final String preferance_name="Bible_Preference";
+public class numbers_main extends Fragment implements View.OnTouchListener {
+    final static float STEP = 200;
+    float mRatio = 1.0f;
+    int mBaseDist;
+    float mBaseRatio;
+    float fontsize = 13;
+    public ScrollView myscrollview;
+    public  Bible_shared_preference ob;
     public DatabaseAssetHelper mydb;
     public Spinner mySpinner;
     public TextView mytextview;
@@ -40,8 +48,10 @@ public class numbers_main extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootview = inflater.inflate(R.layout.genesis_main, container, false);
         mySpinner = (Spinner) rootview.findViewById(R.id.number_spin);
+        myscrollview=(ScrollView) rootview.findViewById(R.id.scrollView_genesis);
         mytextview=(TextView)rootview.findViewById(R.id.mytextview);
         mydb=new DatabaseAssetHelper(getActivity());
+        ob= new Bible_shared_preference(getActivity());
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
 
 
@@ -50,6 +60,7 @@ public class numbers_main extends Fragment {
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
         get_shared_preferencevalue();
+        mytextview.setOnTouchListener(this);
 
 
         myadap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -111,36 +122,47 @@ public class numbers_main extends Fragment {
     }
     private void get_shared_preferencevalue() {
 
-        try {
-
-
-            SharedPreferences sp = this.getActivity().getSharedPreferences(preferance_name, Context.MODE_PRIVATE);
-            //SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-            int value=sp.getInt("my_int_key",18);
-            if(value==0)
-            {
-                mytextview.setTextSize(18);
-                Toast.makeText(getActivity(),"Current Textsize: 18",Toast.LENGTH_LONG).show();
-
-            }
-            else
-            {
-                mytextview.setTextSize(value);
-            }
-
-
-
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_SHORT).show();
-        }
+      mytextview.setTextSize(ob.getData());
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    int getDistance(MotionEvent event) {
+        int dx = (int) (event.getX(0) - event.getX(1));
+        int dy = (int) (event.getY(0) - event.getY(1));
+        return (int) (Math.sqrt(dx * dx + dy * dy));
+    }
+
+
+    public boolean onTouch(View v, MotionEvent event) {
+
+
+        if (event.getPointerCount() == 2) {
+
+            int action = event.getAction();
+            int pureaction = action & MotionEvent.ACTION_MASK;
+            if (pureaction == MotionEvent.ACTION_POINTER_DOWN) {
+
+                mBaseDist = getDistance(event);
+                mBaseRatio = mRatio;
+                myscrollview.requestDisallowInterceptTouchEvent(true);
+            }
+            else {
+                float delta = (getDistance(event) - mBaseDist) / STEP;
+                float multi = (float) Math.pow(2, delta);
+                mRatio = Math.min(1024.0f, Math.max(0.1f, mBaseRatio * multi));
+                mytextview.setTextSize(mRatio + 13);
+            }
+
+
+        }
+        ob.SetData(mytextview.getTextSize());
+        return true;
     }
 
 

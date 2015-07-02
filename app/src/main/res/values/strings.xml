@@ -48,4 +48,89 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_customactionbar">customactionbar</string>
+    <string-array name="old_Testament">
+        <item> Genesis</item>
+        <item>Exodus</item>
+        <item >Leviticus</item>
+        <item> Numbers</item>
+        <item>Deuteronomy</item>
+        <item>Joshua</item>
+        <item>Judges</item>
+        <item>Ruth</item>
+        <item>1st Samuel</item>
+        <item>2nd Samuel</item>
+        <item>1st Kings</item>
+        <item>2nd Kings</item>
+        <item>1st Chronicles</item>
+        <item>2nd Chronicles</item>
+        <item>Ezra</item>
+        <item>Nehemiah</item>
+        <item>Esther</item>
+        <item>Job</item>
+        <item>Psalms</item>
+        <item>Proverbs</item>
+        <item>Ecclesiastes</item>
+        <item>Song of Solomon</item>
+        <item>Isaiah</item>
+        <item>Jeremiah</item>
+        <item>Lamentations</item>
+        <item>Ezekiel</item>
+        <item>Daniel</item>
+        <item>Hosea</item>
+        <item>Joel</item>
+        <item>Amos</item>
+        <item>Obadiah</item>
+        <item>Jonah</item>
+        <item>Micah</item>
+        <item>Nahum</item>
+        <item>Habakkuk</item>
+        <item>Zephaniah</item>
+        <item>Haggai</item>
+        <item>Zechariah</item>
+        <item>Malachi</item>
+    </string-array>
+    <string-array name="New_Testament">
+        <item>Matthew</item>
+        <item>Mark</item>
+        <item>Luke</item>
+        <item>John</item>
+        <item>Acts</item>
+        <item>Romans</item>
+        <item>1st Corinthians</item>
+        <item>2nd Corinthians</item>
+        <item>Galatians</item>
+        <item>Ephesians</item>
+        <item>Philippians</item>
+        <item>Colossians</item>
+        <item>1st Thessalonians</item>
+        <item>2nd Thessalonians</item>
+        <item>1st Timothy</item>
+        <item>2nd Timothy</item>
+        <item>Titus</item>
+        <item>Philemon</item>
+        <item>Hebrews</item>
+        <item>James</item>
+        <item>1st Peter</item>
+        <item>2nd Peter</item>
+        <item>First John</item>
+        <item>2nd John</item>
+        <item>3rd John</item>
+        <item>Jude</item>
+        <item>Revelation</item>
+
+    </string-array>
+    <string-array name="Bible1">
+        <item>Old Testament</item>
+        <item>New Testament</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
 </resources>
