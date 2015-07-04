@@ -23,7 +23,11 @@ public Bible_shared_preference(Context context)
 
         SharedPreferences sp = Sharecontext.getSharedPreferences(preferance_name, Context.MODE_PRIVATE);
         //SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-        Float value = sp.getFloat("my_int_key", 18f);
+        Float value = sp.getFloat("my_int_key", 0f);
+        if(value==0)
+        {
+            value=10f;
+        }
         return value;
 
 

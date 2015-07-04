@@ -287,8 +287,123 @@ public class Bible_home extends AppCompatActivity {
                     break;
             }
         }
-        else  if(cposition==1)
+        else  if(gposition==1)
         {
+            switch (cposition+1) {
+                case 1:
+                    myfrag = new matthew_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 2:
+                    myfrag = new mark_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 3:
+                    myfrag = new luke_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 4:
+                    myfrag = new john_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 5:
+                    myfrag = new acts_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 6:
+                    myfrag = new romans_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 7:
+                    myfrag = new firstchorinthians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 8:
+                    myfrag = new secondchorinthians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 9:
+                    myfrag = new galatians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 10:
+                    myfrag = new Ephesians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 11:
+                    myfrag = new philippians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 12:
+                    myfrag = new colossians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 13:
+                    myfrag = new firstthesolonians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 14:
+                    myfrag = new secondthesolonians_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 15:
+                    myfrag = new firsttimothy_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 16:
+                    myfrag = new secondtimothy_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 17:
+                    myfrag = new titus_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 18:
+                    myfrag = new philemon_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 19:
+                    myfrag = new Hebrews_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 20:
+                    myfrag = new james_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 21:
+                    myfrag = new first_peter();
+                    fragmentChange(myfrag);
+                    break;
+                case 22:
+                    myfrag = new secondpeter_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 23:
+                    myfrag = new firstjohn_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 24:
+                    myfrag = new secondjohn_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 25:
+                    myfrag = new thirdjohn_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 26:
+                    myfrag = new jude_main();
+                    fragmentChange(myfrag);
+                    break;
+                case 27:
+                    myfrag = new revelation_main();
+                    fragmentChange(myfrag);
+                    break;
+
+
+            }
+
+
+
 
         }
 
