@@ -158,7 +158,7 @@ public class deuteronomy_main extends Fragment implements View.OnTouchListener {
                 float delta = (getDistance(event) - mBaseDist) / STEP;
                 float multi = (float) Math.pow(2, delta);
                 mRatio = Math.min(1024.0f, Math.max(0.1f, mBaseRatio * multi));
-                mytextview.setTextSize(mRatio + 13);
+              mytextview.setTextSize(mRatio + 13);
             }
 
 

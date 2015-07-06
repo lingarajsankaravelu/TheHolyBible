@@ -40,8 +40,6 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
     public ArrayAdapter<String> myadap;
     public String[] mylist = {"AMOS 1", "AMOS 2", "AMOS 3", "AMOS 4", "AMOS 5", "AMOS 6", "AMOS 7", "AMOS 8", "AMOS 9"
 
-
-
     };
 
     @Override
@@ -164,11 +162,13 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
                 float delta = (getDistance(event) - mBaseDist) / STEP;
                 float multi = (float) Math.pow(2, delta);
                 mRatio = Math.min(1024.0f, Math.max(0.1f, mBaseRatio * multi));
-                mytextview.setTextSize(mRatio + 13);
+                mytextview.setTextSize(mRatio +13);
+
             }
 
 
         }
+
         ob.SetData(mytextview.getTextSize());
         return true;
     }

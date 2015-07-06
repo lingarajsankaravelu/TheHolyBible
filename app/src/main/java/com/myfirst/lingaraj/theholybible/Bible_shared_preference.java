@@ -3,6 +3,7 @@ package com.myfirst.lingaraj.theholybible;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 /**
@@ -22,12 +23,14 @@ public Bible_shared_preference(Context context)
 
 
         SharedPreferences sp = Sharecontext.getSharedPreferences(preferance_name, Context.MODE_PRIVATE);
-        //SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-        Float value = sp.getFloat("my_int_key", 0f);
-        if(value==0)
+       // SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(Sharecontext);
+
+        Float value = sp.getFloat("my_int_key", 12);
+        if(value!=12)
         {
-            value=10f;
+            value=value-2f;
         }
+
         return value;
 
 

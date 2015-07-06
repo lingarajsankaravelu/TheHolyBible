@@ -35,7 +35,7 @@ public class firstjohn_main extends Fragment implements View.OnTouchListener {
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
-    public String[] mylist = {"1ST JOHN 1", "1ST JOHN 2", "1ST JOHN 3", "1ST JOHN 4", "1ST JOHN 5"  };
+    public String[] mylist = {"1st JOHN 1", "1st JOHN 2", "1st JOHN 3", "1st JOHN 4", "1st JOHN 5"  };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

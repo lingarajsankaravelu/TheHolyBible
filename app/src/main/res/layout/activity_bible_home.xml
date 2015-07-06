@@ -64,13 +64,14 @@
         android:layout_gravity="left|start"
         android:id="@+id/theexpandables"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:choiceMode="singleChoice"
-        android:childDivider="@color/grey"
+        android:childDivider="@color/selector"
         android:dividerHeight="2dip"
-        android:divider="@color/grey"
+        android:divider="@color/selector"
+
         android:listSelector="@color/selector"
-        android:background="@android:drawable/screen_background_dark_transparent"
+        android:background="@color/whitebackgroud"
         android:scrollbars="vertical">
 
         </ExpandableListView>

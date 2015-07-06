@@ -5,13 +5,16 @@
     <TextView
         android:id="@+id/childtext"
         android:layout_width="fill_parent"
+
         android:layout_height="40dp"
         android:textSize="17dip"
-        android:background="@android:drawable/screen_background_dark_transparent"
-        android:textColor="#FFFF"
+        android:layout_marginLeft="5dp"
+        android:background="@color/whitebackgroud"
+        android:textColor="@color/black"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:paddingLeft="50dp"
+        android:paddingLeft="5dp"
+
 
 
 

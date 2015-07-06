@@ -34,7 +34,7 @@ public class secondthesolonians_main extends Fragment implements View.OnTouchLis
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
-    public String[] mylist = {"1ST THESSALONIANS 1", "1ST THESSALONIANS 2", "1ST THESSALONIANS 3"
+    public String[] mylist = {"1st THESSALONIANS 1", "1st THESSALONIANS 2", "1st THESSALONIANS 3"
     };
 
     @Override

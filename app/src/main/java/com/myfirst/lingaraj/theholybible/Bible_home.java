@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -67,7 +68,9 @@ public class Bible_home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_home);
-        //mcontext=getApplicationContext();
+        ob=new Bible_shared_preference(this);
+         checkScreenSize();
+
 
         mylist = getResources().getStringArray(R.array.bible_List);
         mydrawer = (DrawerLayout) findViewById(R.id.mydrawerlayout);
@@ -84,7 +87,7 @@ public class Bible_home extends AppCompatActivity {
         SetMyCustomTheme();
         set_home_page();
         mytoolToolbar.setTitleTextColor(getResources().getColor(R.color.whitebackgroud));
-        ob=new Bible_shared_preference(this);
+
         Set_Expandable_listview();
 
 
@@ -94,9 +97,33 @@ public class Bible_home extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
      mydb= new DatabaseAssetHelper(this);
+
+
         mydb.close();
 
     }
+
+    private void checkScreenSize() {
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch(screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                ob.SetData(20f);
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                 ob.SetData(18f);
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                ob.SetData(14f);
+                break;
+
+        }
+
+
+
+    }
+
 
     public void Set_Expandable_listview() {
 
@@ -110,6 +137,7 @@ public class Bible_home extends AppCompatActivity {
             myexpandable.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    v.setSelected(true);
                     int gposition = groupPosition;
                     int cposition = childPosition;
                     Child_click_display(gposition, cposition);
@@ -436,18 +464,14 @@ public class Bible_home extends AppCompatActivity {
 
     private void SetMyCustomTheme() {
 
-        String [] mysize1={"size","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",
-        "18","19","20","21","22","23","24","25","26","27","28","29","30"};
+
 
         LayoutInflater mInflater = (LayoutInflater) getSupportActionBar().getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         // setting up custom view
         View mCustomView = mInflater.inflate(R.layout.activity_customactionbar, null);
        //TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         //change it back to final Spinner
-         overflowbutton=(Spinner) mCustomView.findViewById(R.id.imageButton);
-        ArrayAdapter<String> actionbar_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,mysize1);
-        actionbar_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        overflowbutton.setAdapter(actionbar_adapter);
+
        /* overflowbutton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -611,14 +635,14 @@ public class Bible_home extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if(id==R.id.help)
+       /* if(id==R.id.help)
         {
             Intent myintent= new Intent(this,help_main.class);
             startActivity(myintent);
             finish();
 
-        }
-        else  if(id==R.id.share)
+        }*/
+         if(id==R.id.share)
         {
             ShareIntent();
         }

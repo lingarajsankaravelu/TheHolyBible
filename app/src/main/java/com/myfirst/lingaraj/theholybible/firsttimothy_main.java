@@ -34,7 +34,7 @@ public class firsttimothy_main extends Fragment implements View.OnTouchListener 
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
-    public String[] mylist = {"1ST TIMOTHY 1", "1ST TIMOTHY 2", "1ST TIMOTHY 3", "1ST TIMOTHY 4", "1ST TIMOTHY 5" , "1ST TIMOTHY 6"
+    public String[] mylist = {"1st TIMOTHY 1", "1st TIMOTHY 2", "1st TIMOTHY 3", "1st TIMOTHY 4", "1st TIMOTHY 5" , "1st TIMOTHY 6"
     };
 
     @Override

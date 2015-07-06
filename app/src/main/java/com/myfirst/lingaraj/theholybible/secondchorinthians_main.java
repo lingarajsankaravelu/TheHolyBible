@@ -34,8 +34,8 @@ public class secondchorinthians_main extends Fragment implements View.OnTouchLis
     public Spinner mySpinner;
     public TextView mytextview;
     public ArrayAdapter<String> myadap;
-    public String[] mylist = {"2ND CORINTHIANS 1", "2ND CORINTHIANS 2", "2ND CORINTHIANS 3", "2ND CORINTHIANS 4", "2ND CORINTHIANS 5", "2ND CORINTHIANS 6", "2ND CORINTHIANS 7", "2ND CORINTHIANS 8", "2ND CORINTHIANS 9", "2ND CORINTHIANS 10", "2ND CORINTHIANS 11", "2ND CORINTHIANS 12"
-            , "2ND CORINTHIANS 13"
+    public String[] mylist = {"2nd CORINTHIANS 1", "2nd CORINTHIANS 2", "2nd CORINTHIANS 3", "2nd CORINTHIANS 4", "2nd CORINTHIANS 5", "2nd CORINTHIANS 6", "2nd CORINTHIANS 7", "2nd CORINTHIANS 8", "2nd CORINTHIANS 9", "2nd CORINTHIANS 10", "2nd CORINTHIANS 11", "2nd CORINTHIANS 12"
+            , "2nd CORINTHIANS 13"
     };
 
     @Override
