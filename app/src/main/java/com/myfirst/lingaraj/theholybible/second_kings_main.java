@@ -161,7 +161,7 @@ public class second_kings_main extends Fragment implements View.OnTouchListener 
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 

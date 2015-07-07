@@ -162,7 +162,7 @@ public class Daniel extends Fragment implements View.OnTouchListener {
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 }

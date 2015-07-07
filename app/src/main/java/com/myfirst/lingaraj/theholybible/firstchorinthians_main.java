@@ -164,7 +164,7 @@ public class firstchorinthians_main extends Fragment implements View.OnTouchList
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 

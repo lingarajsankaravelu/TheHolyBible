@@ -160,7 +160,7 @@ public class second_chronicles extends Fragment implements View.OnTouchListener 
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 

@@ -162,7 +162,7 @@ public class second_samuel_main extends Fragment implements View.OnTouchListener
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 }

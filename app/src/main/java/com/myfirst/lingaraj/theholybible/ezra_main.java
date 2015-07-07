@@ -160,7 +160,7 @@ public class ezra_main extends Fragment implements View.OnTouchListener {
 
         }
         ob.SetData(mytextview.getTextSize());
-        return true;
+        return false;
     }
 
 
