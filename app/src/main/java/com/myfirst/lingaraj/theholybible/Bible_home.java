@@ -1,5 +1,6 @@
 package com.myfirst.lingaraj.theholybible;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -38,7 +39,7 @@ import java.util.List;
 
 
 public class Bible_home extends AppCompatActivity {
-    DisplayMetrics size;
+
     public ScrollView temp;
     public Spinner temp1;
     public  int getwidth;
@@ -647,14 +648,32 @@ public class Bible_home extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        int count=getFragmentManager().getBackStackEntryCount();
+        int count;
+        if(android.os.Build.VERSION.SDK_INT<=10)
+        {
+           count=getSupportFragmentManager().getBackStackEntryCount();
+        }
+        else {
+            count = getFragmentManager().getBackStackEntryCount();
+        }
         if(mydrawer.isDrawerOpen(Gravity.LEFT))
         {
             mydrawer.closeDrawer(Gravity.LEFT);
         }
         else if(count>1)
         {
-            getFragmentManager().popBackStack();
+
+            if(android.os.Build.VERSION.SDK_INT<=10)
+            {
+                getSupportFragmentManager().popBackStack();
+            }
+            else {
+                getFragmentManager().popBackStack();
+            }
+
+
+
+
         }
          else  if(!getSupportActionBar().isShowing())
         {
@@ -704,24 +723,45 @@ public class Bible_home extends AppCompatActivity {
        // return super.onOptionsItemSelected(item);
         return  false;
     }
-
+    @SuppressLint("NewApi")
+    @SuppressWarnings("deprecation")
     public void ShareIntent() {
             cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
              String text;//=  cm.getPrimaryClip().getItemAt(0).toString();
         try {
-            if (cm.hasPrimaryClip()) {
-                ClipData.Item item = cm.getPrimaryClip().getItemAt(0);
-                text = item.getText().toString();
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
-                startActivity(Intent.createChooser(sharingIntent, "Share Via"));
 
-            } else {
-                Toast.makeText(this, "Copy something to share", Toast.LENGTH_LONG).show();
+            if(android.os.Build.VERSION.SDK_INT<=10)
+            {
+                text=cm.getText().toString();
+                if(!text.isEmpty()) {
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(sharingIntent, "Share Via"));
+                }
+                else
+                {
+                    Toast.makeText(this, "Copy something to share", Toast.LENGTH_LONG).show();
+                }
+            }
+            else  {
+                if(cm.hasPrimaryClip()) {
+                    ClipData.Item item = cm.getPrimaryClip().getItemAt(0);
+                    text = item.getText().toString();
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(sharingIntent, "Share Via"));
+                }
+                else
+                {
+                    Toast.makeText(this, "Copy something to share", Toast.LENGTH_LONG).show();
 
+                }
 
             }
+
+
 
 
         }
