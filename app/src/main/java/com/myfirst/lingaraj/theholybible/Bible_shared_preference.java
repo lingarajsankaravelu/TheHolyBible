@@ -3,8 +3,6 @@ package com.myfirst.lingaraj.theholybible;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 /**
  * Created by lingaraj on 7/2/2015.

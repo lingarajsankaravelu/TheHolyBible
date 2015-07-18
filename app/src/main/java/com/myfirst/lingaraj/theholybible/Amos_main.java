@@ -1,12 +1,9 @@
 package com.myfirst.lingaraj.theholybible;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +21,13 @@ import android.widget.Toast;
  * Created by lingaraj on 6/19/2015.
  */
 public class Amos_main extends Fragment implements View.OnTouchListener {
+    //double Declaration
+    int clickCount = 0;
+    long startTime;
+    long duration;
+    final int MAX_DURATION = 500;
+    //Double Tap Declaration Ends
+
     final static float STEP = 200;
     float mRatio = 1.0f;
     int mBaseDist;
@@ -148,16 +151,20 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
 
 
+
         if (event.getPointerCount() == 2) {
 
             int action = event.getAction();
             int pureaction = action & MotionEvent.ACTION_MASK;
             if (pureaction == MotionEvent.ACTION_POINTER_DOWN) {
 
+
                 mBaseDist = getDistance(event);
                 mBaseRatio = mRatio;
                 myscrollview.requestDisallowInterceptTouchEvent(true);
+
             }
+
             else {
                 float delta = (getDistance(event) - mBaseDist) / STEP;
                 float multi = (float) Math.pow(2, delta);

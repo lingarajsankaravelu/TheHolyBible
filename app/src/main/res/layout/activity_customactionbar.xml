@@ -16,6 +16,30 @@
         android:textColor="#fff"
         android:textStyle="bold" />
 
+<RelativeLayout
+    android:layout_marginLeft="210dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    >
+
+    <ImageButton
+        android:gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/share"
+        android:clickable="true"
+        android:background="@color/colorprimary"
+        />
+
+
+
+</RelativeLayout>
+
+
+
+
+
 <!--
     <Spinner
 

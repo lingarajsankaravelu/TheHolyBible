@@ -1,7 +1,6 @@
 package com.myfirst.lingaraj.theholybible;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
