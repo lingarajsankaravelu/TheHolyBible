@@ -491,12 +491,13 @@ public class Bible_home extends AppCompatActivity {
             public void onClick(View v) {
                 if(myfrag.getActivity().findViewById(R.id.mytextview)!=null && myfrag.getActivity().findViewById(R.id.number_spin)!=null) {
                     getSupportActionBar().hide();
-                    size=new DisplayMetrics();
-                    wmanager=(WindowManager) getSystemService(Context.WINDOW_SERVICE);
-                    int mwidth=wmanager.getDefaultDisplay().getWidth();
-                    int mheight=wmanager.getDefaultDisplay().getHeight();
-
-                     temp = (ScrollView) myfrag.getActivity().findViewById(R.id.scrollView_genesis);
+                   // size=new DisplayMetrics();
+                    //wmanager=(WindowManager) getSystemService(Context.WINDOW_SERVICE);
+                    //int mwidth=wmanager.getDefaultDisplay().getWidth();
+                    int mwidth=getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+                   // int mheight=wmanager.getDefaultDisplay().getHeight();
+                    int mheight=getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+                    temp = (ScrollView) myfrag.getActivity().findViewById(R.id.scrollView_genesis);
                     getwidth=temp.getWidth();
                     getheight=temp.getHeight();
                      temp1=(Spinner) myfrag.getActivity().findViewById(R.id.number_spin);
