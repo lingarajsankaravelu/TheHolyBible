@@ -54,7 +54,7 @@ public class deuteronomy_main extends Fragment implements View.OnTouchListener {
         get_shared_preferencevalue();
 
         mySpinner.setAdapter(myadap);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
         mytextview.setOnTouchListener(this);
@@ -129,7 +129,10 @@ public class deuteronomy_main extends Fragment implements View.OnTouchListener {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        return super.onOptionsItemSelected(item);
+       // return super.onOptionsItemSelected(item);
+        return  false;
+
+
     }
 
     int getDistance(MotionEvent event) {

@@ -57,7 +57,7 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
         mydb=new DatabaseAssetHelper(getActivity());
 
         myadap = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mylist);
-       setHasOptionsMenu(true);
+       setHasOptionsMenu(false);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
 
@@ -137,7 +137,9 @@ public class Amos_main extends Fragment implements View.OnTouchListener {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        return super.onOptionsItemSelected(item);
+       // return super.onOptionsItemSelected(item);
+      return  false;
+
     }
 
 

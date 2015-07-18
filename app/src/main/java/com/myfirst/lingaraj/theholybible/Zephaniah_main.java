@@ -50,7 +50,7 @@ public class Zephaniah_main extends Fragment implements View.OnTouchListener {
 
 
         mySpinner.setAdapter(myadap);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
         get_shared_preferencevalue();

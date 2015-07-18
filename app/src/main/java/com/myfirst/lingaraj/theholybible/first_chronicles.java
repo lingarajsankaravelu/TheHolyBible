@@ -54,7 +54,7 @@ public class first_chronicles extends Fragment implements View.OnTouchListener {
 
 
         mySpinner.setAdapter(myadap);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/times.ttf");
         mytextview.setTypeface(tf);
         get_shared_preferencevalue();
@@ -128,8 +128,8 @@ public class first_chronicles extends Fragment implements View.OnTouchListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-
-        return super.onOptionsItemSelected(item);
+        return  false;
+       // return super.onOptionsItemSelected(item);
     }
     int getDistance(MotionEvent event) {
         int dx = (int) (event.getX(0) - event.getX(1));

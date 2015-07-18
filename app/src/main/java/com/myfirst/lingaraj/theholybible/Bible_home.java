@@ -11,13 +11,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.util.Size;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +38,12 @@ import java.util.List;
 
 
 public class Bible_home extends AppCompatActivity {
+    DisplayMetrics size;
+    public ScrollView temp;
+    public Spinner temp1;
+    public  int getwidth;
+    public int getheight;
+    public WindowManager wmanager;
     public myExpandableadapter adapter;
     public Bible_shared_preference ob;
     public ExpandableListView myexpandable;
@@ -466,6 +478,42 @@ public class Bible_home extends AppCompatActivity {
        //TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         //change it back to final Spinner
 
+        ImageButton share_action=(ImageButton) mCustomView.findViewById(R.id.share_action);
+        ImageButton stretch_action=(ImageButton)mCustomView.findViewById(R.id.strectch_action);
+        share_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareIntent();
+            }
+        });
+        stretch_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(myfrag.getActivity().findViewById(R.id.mytextview)!=null && myfrag.getActivity().findViewById(R.id.number_spin)!=null) {
+                    getSupportActionBar().hide();
+                    size=new DisplayMetrics();
+                    wmanager=(WindowManager) getSystemService(Context.WINDOW_SERVICE);
+                    int mwidth=wmanager.getDefaultDisplay().getWidth();
+                    int mheight=wmanager.getDefaultDisplay().getHeight();
+
+                     temp = (ScrollView) myfrag.getActivity().findViewById(R.id.scrollView_genesis);
+                    getwidth=temp.getWidth();
+                    getheight=temp.getHeight();
+                     temp1=(Spinner) myfrag.getActivity().findViewById(R.id.number_spin);
+                    getSupportActionBar().hide();
+                    temp1.setVisibility(View.GONE);
+                    temp.setMinimumHeight(mheight);
+                    temp.setMinimumWidth(mwidth);
+
+                }
+                else
+                {
+                  Toast.makeText(Bible_home.this,"Used to read in full screen mode choose versus first",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
        /* overflowbutton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -607,6 +655,15 @@ public class Bible_home extends AppCompatActivity {
         {
             getFragmentManager().popBackStack();
         }
+         else  if(!getSupportActionBar().isShowing())
+        {
+            getSupportActionBar().show();
+            temp1.setVisibility(View.VISIBLE);
+            temp.setMinimumWidth(getwidth);
+            temp.setMinimumHeight(getheight);
+
+
+        }
         else {
             super.onBackPressed();
         }
@@ -621,7 +678,7 @@ public class Bible_home extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_customactionbar, menu);
-        return true;
+        return false;
     }
 
 
@@ -643,35 +700,40 @@ public class Bible_home extends AppCompatActivity {
 
 
 
-        return super.onOptionsItemSelected(item);
+       // return super.onOptionsItemSelected(item);
+        return  false;
     }
 
     public void ShareIntent() {
             cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
              String text;//=  cm.getPrimaryClip().getItemAt(0).toString();
-        if(cm.hasPrimaryClip())
-        {
-            ClipData.Item item=cm.getPrimaryClip().getItemAt(0);
-            text=item.getText().toString();
-            Intent sharingIntent= new Intent(Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
-            startActivity(Intent.createChooser(sharingIntent,"Share Via"));
+        try {
+            if (cm.hasPrimaryClip()) {
+                ClipData.Item item = cm.getPrimaryClip().getItemAt(0);
+                text = item.getText().toString();
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(Intent.createChooser(sharingIntent, "Share Via"));
+
+            } else {
+                Toast.makeText(this, "Copy something to share", Toast.LENGTH_LONG).show();
+
+
+            }
+
 
         }
-        else
+        catch (Exception e)
         {
-            Toast.makeText(this,"Copy something to share",Toast.LENGTH_LONG).show();
-
-
-
-
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }
-
-
 
 
 
 
     }
+
+
+
 }

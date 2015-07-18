@@ -65,7 +65,7 @@ public class genesismain extends Fragment implements View.OnTouchListener {
 
 
 
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         mySpinner.setAdapter(myadap);
 
         myadap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

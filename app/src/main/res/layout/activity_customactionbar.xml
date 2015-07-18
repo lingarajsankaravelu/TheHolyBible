@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/colorprimary" >
+    android:background="@color/colorprimary">
 
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="@string/app_name"
@@ -17,18 +18,57 @@
         android:textStyle="bold" />
 
 <RelativeLayout
-    android:layout_marginLeft="210dp"
-    android:layout_width="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+
+    android:layout_centerVertical="true"
+    android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:gravity="right"
+
     >
 
+
     <ImageButton
-        android:gravity="start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/stretch_icon"
+        android:background="@color/colorprimary"
+        android:id="@+id/strectch_action"
+
+        android:layout_centerVertical="true"
+
+        android:paddingLeft="8dp"
+        android:paddingRight="2dp"
+
+        android:clickable="true"
+        android:layout_toRightOf="@+id/share_action"
+        android:layout_toEndOf="@+id/share_action"
+
+
+
+
+        />
+
+
+
+
+
+
+
+
+    <ImageButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+
+        android:layout_centerVertical="true"
         android:src="@drawable/share"
         android:clickable="true"
+        android:id="@+id/share_action"
         android:background="@color/colorprimary"
         />
 
