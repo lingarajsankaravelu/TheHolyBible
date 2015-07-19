@@ -7,7 +7,7 @@ android {
         applicationId "com.myfirst.lingaraj.theholybible"
         minSdkVersion 10
         targetSdkVersion 22
-        versionCode 3
+        versionCode 5
         versionName "1.0"
     }
     buildTypes {
