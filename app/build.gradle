@@ -1,18 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.myfirst.lingaraj.theholybible"
-        minSdkVersion 10
-        targetSdkVersion 22
-        versionCode 5
-        versionName "1.0"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 6
+        versionName "1.0.1"
     }
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,9 +26,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
-    compile 'com.google.android.gms:play-services-ads:7.5.0'
+    def and_lib_version = "28.0.0";
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$and_lib_version"
+    implementation "com.android.support:support-v4:$and_lib_version"
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    implementation 'com.google.android.gms:play-services-ads:17.0.0'
 }
